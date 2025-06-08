@@ -1,0 +1,3 @@
+git config --global user.name "牛马"
+
+git config --global user.email "12345"

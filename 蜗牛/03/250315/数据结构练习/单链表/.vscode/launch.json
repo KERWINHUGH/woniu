@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "C Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "args": [],
+        "preLaunchTask": "C Build",
+        "externalConsole": false,
+        "MIMode": "gdb"
+      }
+    ]
+  }

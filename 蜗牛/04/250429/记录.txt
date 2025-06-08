@@ -1,0 +1,5 @@
+MQTT:
+https://www.emqx.com/zh/mqtt/public-mqtt5-broker
+
+VPN:
+https://ikuuu.one/auth/login
