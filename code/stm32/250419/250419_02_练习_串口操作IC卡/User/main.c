@@ -1,0 +1,30 @@
+#include "stm32f10x.h"                  // Device header
+#include "Delay.h"
+#include "LED.h"
+#include "OLED.h"
+#include "Key.h"
+#include "Serial.h"
+#include "IC.h"
+
+
+uint8_t ReadCardArr[8] = {0x01,0x08,0xA1,0x20,0x00,0x01,0x00,0x00};
+uint8_t ReadBlockArr[8] = {0x01,0x08,0xA3,0x20,0x09,0x01,0x00,0x7D};
+uint8_t WriteBlockArr[23] = {0x01 ,0x17 ,0xA4 ,0x20 ,0x09 ,0x01 ,0x00 ,0x11 ,0x22 ,0x33 ,0x44 ,0x55 ,0x66 ,0x77 ,0x88 ,0x99 ,0xAA ,0xBB ,0xCC ,0xDD ,0xEE, 0xFF, 0x65};
+
+int main()
+{
+	OLED_Init();
+	Serial_Init();	
+	/******************计算校验和，并发送读卡号的数组***************/
+//	Sent_ICode(ReadCardArr);
+	/******************计算校验和，并写入卡块的数组***************/
+//	Sent_ICode(WriteBlockArr);
+	/******************计算校验和，并读卡块的数组***************/
+	Sent_ICode(ReadBlockArr);
+	
+	
+	while(1)
+	{
+		
+	}
+}

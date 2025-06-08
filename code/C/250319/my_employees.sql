@@ -1,0 +1,16 @@
+BEGIN TRANSACTION;
+CREATE TABLE IF NOT EXISTS "employees" (
+	"id"	INTEGER UNIQUE,
+	"name"	TEXT NOT NULL,
+	"age"	INTEGER,
+	"tel"	INTEGER,
+	"gender"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT)
+);
+INSERT INTO "employees" VALUES (1,'jack',16,88990000,'F');
+INSERT INTO "employees" VALUES (2,'fiona',20,88990000,'F');
+INSERT INTO "employees" VALUES (3,'李强',17,88990000,'F');
+INSERT INTO "employees" VALUES (4,'filip',18,88990000,'F');
+INSERT INTO "employees" VALUES (5,'玫瑰',22,88990000,'F');
+INSERT INTO "employees" VALUES (6,'aien',17,88990000,'F');
+COMMIT;

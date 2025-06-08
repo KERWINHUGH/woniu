@@ -1,0 +1,18 @@
+-- admins表
+CREATE TABLE IF NOT EXISTS admins (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    password TEXT NOT NULL
+);
+
+-- employees表
+CREATE TABLE IF NOT EXISTS employees (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    password TEXT NOT NULL,
+    age INTEGER,
+    gender INTEGER,
+    salary REAL,
+    department INTEGER,
+    title INTEGER
+);

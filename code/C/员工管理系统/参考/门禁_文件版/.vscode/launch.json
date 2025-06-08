@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "C Launch",
+        "type": "cppdbg",
+        "request": "launch",
+        "program": "${fileDirname}/${fileBasenameNoExtension}",
+        "args": [],
+        "stopAtEntry": false,
+        "cwd": "${fileDirname}",
+        "environment": [],
+        "externalConsole": false, // 使用 VSCode 内置终端
+        "MIMode": "gdb",
+        "preLaunchTask": "C Build" // 运行前自动编译
+      }
+    ]
+  }

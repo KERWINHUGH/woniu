@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -O2   CMakeFiles/person.dir/GUIFactory.cpp.o CMakeFiles/person.dir/main.cpp.o CMakeFiles/person.dir/platformFactory.cpp.o CMakeFiles/person.dir/shapeFamily.cpp.o  -o bin/person 

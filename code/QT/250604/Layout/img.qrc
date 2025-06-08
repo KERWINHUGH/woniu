@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qrc/freecompress-woniu.png</file>
+        <file>qrc/cowboy_hat.png</file>
+    </qresource>
+</RCC>

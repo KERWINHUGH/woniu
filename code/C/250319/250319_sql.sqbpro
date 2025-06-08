@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><sqlb_project><db path="/home/aai/woniu/250319/数据库/练习" readonly="0" foreign_keys="1" case_sensitive_like="0" temp_store="0" wal_autocheckpoint="1000" synchronous="2"/><attached/><window><main_tabs open="structure browser query pragmas" current="2"/></window><tab_structure><column_width id="0" width="300"/><column_width id="1" width="0"/><column_width id="2" width="100"/><column_width id="3" width="2016"/><column_width id="4" width="0"/><expanded_item id="0" parent="1"/><expanded_item id="1" parent="1"/><expanded_item id="2" parent="1"/><expanded_item id="3" parent="1"/></tab_structure><tab_browse><current_table name="4,12:maindept_manager"/><default_encoding codec=""/><browse_table_settings><table schema="main" name="departments" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="58"/><column index="2" value="140"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="dept_emp" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="57"/><column index="2" value="58"/><column index="3" value="74"/><column index="4" value="74"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="dept_manager" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="58"/><column index="2" value="57"/><column index="3" value="74"/><column index="4" value="74"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="employees" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="57"/><column index="2" value="74"/><column index="3" value="74"/><column index="4" value="71"/><column index="5" value="49"/><column index="6" value="74"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="salaries" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="57"/><column index="2" value="45"/><column index="3" value="74"/><column index="4" value="74"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table><table schema="main" name="titles" show_row_id="0" encoding="" plot_x_axis="" unlock_view_pk="_rowid_"><sort/><column_widths><column index="1" value="57"/><column index="2" value="133"/><column index="3" value="74"/><column index="4" value="74"/></column_widths><filter_values/><conditional_formats/><row_id_formats/><display_formats/><hidden_columns/><plot_y_axes/><global_filter/></table></browse_table_settings></tab_browse><tab_sql><sql name="SQL 1">--单表查询
+--1.查询所有员工的姓名和出生日期。
+--select first_name,last_name,birth_date from employees 
+--2.查询所有在1980年之后出生的员工姓名。
+--select first_name,last_name, birth_date from employees where birth_date &gt;1980
+--3.查询性别为男的员工姓名和雇佣日期，并按雇佣日期降序排列。
+--select first_name,last_name,hire_date ,gender from employees where gender = 'M' order by hire_date desc
+--4.查询姓“Smith”的员工信息，名字可以模糊匹配。
+--select first_name,last_name from employees where first_name like '%Smith%' or last_name like '%Smith%'
+--5.分页查询员工信息，每页10条，查询第2页的数据。
+--select *from employees limit 10,10
+--多表查询
+--7.查询员工及其所属部门的名称。
+/*
+select e.*,de.dept_name 
+from employees e
+left join dept_emp d on e.emp_no = d.emp_no
+left join departments de on d.dept_no = de.dept_no 
+*/
+
+--8.查询在某个时间段内（例如2020-01-01至2023-12-31）在职的员工姓名和部门名称。
+/*
+select e.first_name,e.last_name,de.dept_name,e.hire_date
+from employees e
+join dept_emp d on e.emp_no = d.emp_no
+join departments de on d.dept_no = de.dept_no 
+and e.hire_date between 2020 and 2024
+*/
+--10.查询员工姓名、职位（title）和工资，并确保这些员工在查询时（例如某个日期'2023-01-01'）仍在职。
+/*
+select e.first_name,e.last_name,t.title,s.salary,e.hire_date
+from employees e
+join salaries s on e.emp_no = s.emp_no
+join titles t on e.emp_no = t.emp_no
+and e.hire_date = '2023-01-01' 
+*/
+
+--附加题
+--1.查询在某个部门（例如'd001'）工作过的所有员工的姓名
+/*
+select e.first_name,e.last_name,d.dept_no
+from employees e
+join dept_emp d on e.emp_no = d.emp_no
+and d.dept_no = 'd001'
+*/
+--2.查询从未在任何部门担任过经理的员工姓名。----?
+/*
+select e.emp_no,e.first_name ,e.last_name
+from employees e
+join dept_emp de on e.emp_no = de.emp_no
+where de.emp_no not in ( 1,2,10,11,12 )
+*/
+--3.查询最高工资员工的姓名及部门信息。
+/*
+select e.first_name,e.last_name,d.*,s.salary
+from employees e
+join salaries s on e.emp_no = s.emp_no
+join dept_emp d on e.emp_no =d.emp_no
+and s.salary = 75000 order by s.salary asc
+*/
+--4.查询同时拥有两个不同职位的员工的姓名。
+</sql><current_tab id="0"/></tab_sql></sqlb_project>

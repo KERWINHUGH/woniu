@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hugh/woniu/250521/person/src1/complex.cpp
+complex.h
+/home/hugh/woniu/250521/person/src1/complex.h
+
+/home/hugh/woniu/250521/person/src1/complex.h
+iostream
+-
+
+/home/hugh/woniu/250521/person/src1/main.cpp
+iostream
+-
+complex.h
+/home/hugh/woniu/250521/person/src1/complex.h
+

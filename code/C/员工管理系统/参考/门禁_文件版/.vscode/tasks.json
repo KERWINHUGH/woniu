@@ -1,0 +1,25 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+	  {
+		"type": "cppbuild",
+		"label": "C Build",
+		"command": "gcc",
+		"args": [
+		  "-std=c11",       // 启用 C11 标准
+		  "-fdiagnostics-color=always",
+		  "-g",
+		  "${file}",
+		  "-o",
+		  "${fileDirname}/${fileBasenameNoExtension}" // 生成可执行文件
+		],
+		"options": {
+		  "cwd": "${fileDirname}"
+		},
+		"group": {
+		  "kind": "build",
+		  "isDefault": true
+		}
+	  }
+	]
+  }

@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "ESP32_creatProject",
+			"path": ".."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"sstream": "cpp"
+		}
+	}
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    let person = {
+  "results": [
+    {
+      "location": {
+        "id": "WTSQQYHVQ973",
+        "name": "南京",
+        "country": "CN",
+        "path": "南京,南京,江苏,中国",
+        "timezone": "Asia/Shanghai",
+        "timezone_offset": "+08:00"
+      },
+      "now": {
+        "text": "晴",
+        "code": "0",
+        "temperature": "24"
+      },
+      "last_update": "2025-04-28T11:24:06+08:00"
+    }
+  ]
+}
+    console.log (person.results[0].location.name);
+    console.log (person.results[0].now.text);
+    console.log (person.results[0].now.code);
+    console.log (person.results[0].now.temperature);
+    console.log (person.results[0].last_update);
+
+</script>

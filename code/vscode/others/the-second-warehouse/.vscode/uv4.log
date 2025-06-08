@@ -1,0 +1,68 @@
+*** Using Compiler 'V5.06 update 2 (build 183)', folder: 'E:\keil\ARM\ARMCC\Bin'
+Build target 'Target 1'
+compiling OLED.c...
+Hardware\OLED_Font.h(11): error:  #101: "uint8_t" has already been declared in the current scope
+  void uint8_t OLED_SMAIL[32][32]={
+Hardware\OLED_Font.h(11): error:  #70: incomplete type is not allowed
+  void uint8_t OLED_SMAIL[32][32]={
+Hardware\OLED_Font.h(11): error:  #65: expected a ";"
+  void uint8_t OLED_SMAIL[32][32]={
+Hardware\OLED_Font.h(47): warning:  #12-D: parsing restarts here after previous syntax error
+  };
+Hardware\OLED_Font.h(50): error:  #757: variable "uint8_t" is not a type name
+  const uint8_t OLED_F8x16[][16]=
+Hardware\OLED.c(55): error:  #757: variable "uint8_t" is not a type name
+  void OLED_I2C_SendByte(uint8_t Byte)
+Hardware\OLED.c(57): error:  #65: expected a ";"
+        uint8_t i;
+Hardware\OLED.c(58): error:  #20: identifier "i" is undefined
+        for (i = 0; i < 8; i++)
+Hardware\OLED.c(73): error:  #757: variable "uint8_t" is not a type name
+  void OLED_WriteCommand(uint8_t Command)
+Hardware\OLED.c(87): error:  #757: variable "uint8_t" is not a type name
+  void OLED_WriteData(uint8_t Data)
+Hardware\OLED.c(102): error:  #757: variable "uint8_t" is not a type name
+  void OLED_SetCursor(uint8_t Y, uint8_t X)
+Hardware\OLED.c(102): error:  #757: variable "uint8_t" is not a type name
+  void OLED_SetCursor(uint8_t Y, uint8_t X)
+Hardware\OLED.c(116): error:  #65: expected a ";"
+        uint8_t i, j;
+Hardware\OLED.c(117): error:  #20: identifier "j" is undefined
+        for (j = 0; j < 8; j++)
+Hardware\OLED.c(120): error:  #20: identifier "i" is undefined
+                for(i = 0; i < 128; i++)
+Hardware\OLED.c(134): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowChar(uint8_t Line, uint8_t Column, char Char)
+Hardware\OLED.c(134): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowChar(uint8_t Line, uint8_t Column, char Char)
+Hardware\OLED.c(136): error:  #65: expected a ";"
+        uint8_t i;
+Hardware\OLED.c(138): error:  #20: identifier "i" is undefined
+        for (i = 0; i < 8; i++)
+Hardware\OLED.c(143): error:  #20: identifier "i" is undefined
+        for (i = 0; i < 8; i++)
+Hardware\OLED.c(156): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowString(uint8_t Line, uint8_t Column, char *String)
+Hardware\OLED.c(156): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowString(uint8_t Line, uint8_t Column, char *String)
+Hardware\OLED.c(158): error:  #65: expected a ";"
+        uint8_t i;
+Hardware\OLED.c(159): error:  #20: identifier "i" is undefined
+        for (i = 0; String[i] != '\0'; i++)
+Hardware\OLED.c(187): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length)
+Hardware\OLED.c(187): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length)
+Hardware\OLED.c(187): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowNum(uint8_t Line, uint8_t Column, uint32_t Number, uint8_t Length)
+Hardware\OLED.c(189): error:  #65: expected a ";"
+        uint8_t i;
+Hardware\OLED.c(190): error:  #20: identifier "i" is undefined
+        for (i = 0; i < Length; i++)                                                    
+Hardware\OLED.c(204): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowSignedNum(uint8_t Line, uint8_t Column, int32_t Number, uint8_t Length)
+Hardware\OLED.c(204): error:  #757: variable "uint8_t" is not a type name
+  void OLED_ShowSignedNum(uint8_t Line, uint8_t Column, int32_t Number, uint8_t Length)
+Hardware\OLED.c: 1 warning, 30 errors
+".\Objects\Project.axf" - 30 Error(s), 1 Warning(s).
+Target not created.

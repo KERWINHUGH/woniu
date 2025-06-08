@@ -1,0 +1,4 @@
+/mnt/d/code/vscode/SmartHomeManagementSystem/build/CMakeFiles/rebuild_cache.dir
+/mnt/d/code/vscode/SmartHomeManagementSystem/build/CMakeFiles/edit_cache.dir
+/mnt/d/code/vscode/SmartHomeManagementSystem/build/CMakeFiles/clean-all.dir
+/mnt/d/code/vscode/SmartHomeManagementSystem/build/CMakeFiles/SmartHomeManagementSystem.dir

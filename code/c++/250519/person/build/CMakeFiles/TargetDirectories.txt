@@ -1,0 +1,4 @@
+/home/hugh/woniu/250519/person/build/CMakeFiles/rebuild_cache.dir
+/home/hugh/woniu/250519/person/build/CMakeFiles/edit_cache.dir
+/home/hugh/woniu/250519/person/build/CMakeFiles/person.dir
+/home/hugh/woniu/250519/person/build/CMakeFiles/clean-all.dir

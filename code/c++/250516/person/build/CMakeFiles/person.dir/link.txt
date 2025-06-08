@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -O2   CMakeFiles/person.dir/test.cpp.o  -o bin/person 

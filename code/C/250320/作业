@@ -1,0 +1,115 @@
+--1.查询在某个部门（例如'd001'）工作过的所有员工的姓名
+/*
+select e.first_name,e.last_name,d.dept_no
+from employees e
+join dept_emp d on e.emp_no = d.emp_no
+and d.dept_no = 'd001'
+*/
+--2.查询从未在任何部门担任过经理的员工姓名。
+/*
+select e.emp_no,e.first_name ,e.last_name
+from employees e
+join dept_emp de on e.emp_no = de.emp_no
+where de.emp_no not in ( select emp_no from dept_manager )
+*/
+--select emp_no from dept_manager 
+  
+--3.查询最高工资员工的姓名及部门信息。
+ /*
+select e.first_name,e.last_name,de.dept_no,dept_name,max( salary ) 
+from salaries s
+join employees e on s.emp_no = e.emp_no
+join dept_emp d on d.emp_no = e.emp_no
+join departments de on d.dept_no =de.dept_no
+*/
+--4.查询同时拥有两个不同职位的员工的姓名。
+/*
+select e.first_name,e.last_name
+from employees e
+join dept_manager d on e.emp_no = d.emp_no
+*/
+/*
+select e.first_name ,e.last_name
+from employees e
+join dept_emp d on e.emp_no = d.emp_no
+join dept_manager de on d.dept_no =de.dept_no
+and d.emp_no =de.emp_no
+*/
+--5.查询同时拥有两个不同部门,工作经验的员工的姓名------?
+/*
+select e.first_name,e.last_name ,d.dept_no
+from employees e
+join dept_emp d on e.emp_no =d.emp_no
+join departments de on de.dept_no = d.dept_no
+JOIN (select emp_no, count(dept_no) num 
+		from dept_emp group by emp_no HAVING num >=2
+	 ) info on e.emp_no = info.emp_no
+*/
+--6.查询每个部门在2020年的总薪水
+/*
+select d.dept_no,de.dept_name,sum( salary )
+from dept_emp d
+join departments de on d.dept_no = de.dept_no
+join salaries s on s.emp_no =d.emp_no
+group by d.dept_no
+*/
+--7.查询工资高于所有女性员工的男性员工的姓名 ------?
+select e.first_name,e.last_name 
+from employees e
+join salaries s on e.emp_no = s.emp_no
+and e.gender = 'M' 
+and s.salary>(select max( salary ) 
+				from salaries s
+				join employees e on s.emp_no = e.emp_no
+				and e.gender = 'F')
+
+/*
+select e.first_name,e.last_name,s.salary  
+from employees e
+join salaries s on e.emp_no = s.emp_no
+and (select s1.salary 
+		from salaries s1
+		join employees e1 on e1.emp_no = s1.emp_no
+		join (select s2.emp_no,s2.salary 
+				from salaries s2
+				join employees e2 on e2.emp_no = s2.emp_no
+				and e2.gender = 'F') s3 on s1.emp_no = s3.emp_no
+				and s1.salary > s3.salary and e1.gender = 'M' )
+*/
+/*
+select e1.first_name,e1.last_name,s1.salary 
+		from salaries s1
+		join employees e1 on e1.emp_no = s1.emp_no
+		join (select s2.emp_no,s2.salary 
+				from salaries s2
+				join employees e2 on e2.emp_no = s2.emp_no
+				and e2.gender = 'F') s3 on s1.emp_no = s3.emp_no
+				and e1.gender = 'M' and s1.salary > s3.salary 
+*/
+--8.查询在'Sales'部门工作的员工的姓名
+/*
+select e.first_name,e.last_name
+from employees e
+join dept_emp d on e.emp_no = d.emp_no
+join departments de on de.dept_no = d.dept_no
+and de.dept_name = 'Sales'
+*/
+--9.查询每个部门中薪水最高的员工，如果该部门有多个员工薪水相同，则都返回
+/*
+select e.*,max( salary ) 
+from salaries s 
+left join employees e on e.emp_no = s.emp_no
+left join dept_emp d on s.emp_no = d.emp_no
+left join departments de on de.dept_no = d.dept_no
+group by de.dept_no
+*/
+select e.emp_no, e.first_name, e.last_name, de.dept_no
+from employees e
+JOIN dept_emp de on e.emp_no = de.emp_no
+JOIN salaries s on s.emp_no = e.emp_no
+where (dept_no , salary) in (
+				select de.dept_no, max(s.salary) 
+					from salaries s
+					JOIN dept_emp de on s.emp_no = de.emp_no GROUP by de.dept_no
+				)
+ 

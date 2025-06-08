@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>switchA</class>
+ <widget class="QDialog" name="switchA">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>750</width>
+    <height>450</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>switchA</string>
+  </property>
+  <property name="layoutDirection">
+   <enum>Qt::LeftToRight</enum>
+  </property>
+  <widget class="QPushButton" name="bnt_B">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>240</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="text">
+    <string>B</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>70</y>
+     <width>471</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>微软雅黑</family>
+     <pointsize>36</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(255, 255, 255);</string>
+   </property>
+   <property name="text">
+    <string>A</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bnt_C">
+   <property name="geometry">
+    <rect>
+     <x>440</x>
+     <y>240</y>
+     <width>100</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="layoutDirection">
+    <enum>Qt::RightToLeft</enum>
+   </property>
+   <property name="text">
+    <string>C</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>bnt_B</zorder>
+  <zorder>bnt_C</zorder>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

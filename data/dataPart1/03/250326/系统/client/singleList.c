@@ -1,0 +1,182 @@
+/***************************************************
+# File Name:    单链表练习1.c
+# Author:       ZhuDongdong
+# Mail:         1660397971@qq.com.
+# Created Time: 2025年03月16日 星期日 14时03分13秒
+****************************************************/
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
+#include "singleList.h"
+
+//创建节点
+Node *createNode(Employee user){
+	Node *newNode = (Node *)malloc(sizeof(user));
+	if(newNode == NULL){
+		perror("内存分配失败");
+		exit(EXIT_FAILURE);
+	}
+	newNode->data = user;
+	newNode->next = NULL;
+	return newNode;
+}
+/*
+void printList(Node *head){
+	Node *current = head;
+	printf("链表状态：");
+	while(current !=NULL){
+		printf("%s->",current->data.name);
+		current = current->next;
+	}
+	printf("NULL\n");
+	printf("头指针：%p，尾指针：%p\n",(void*)head,(void*)(current));
+}
+*/
+//尾插
+Node *addNode(Node *head ,Employee user){
+	Node *tailNode = createNode(user);
+	Node *current = head;
+	while(current->next != NULL){
+		current = current->next;
+	}
+	current->next =tailNode;
+	return tailNode; 
+}
+
+//头插和中间插入
+Node *insertNode(Node **head, char *name,Employee user){
+	Node *newNode = createNode(user);
+		//中间插入,找到指定账户
+		Node *current = *head;
+		Node *prev = NULL;
+		while(current->next != NULL && strcmp(current->data.name, name)!=0){
+			prev = current;//找到指定账户前一个节点
+			current = current->next;
+		}
+		//中间插入,在指定账户之前
+		if(strcmp(current->data.name, name)==0){
+			//头插,在指定账户之前
+			if(strcmp((*head)->data.name,name) ==0){
+				newNode->next = *head;
+				*head = newNode;
+			}else{
+				newNode->next = current;
+				prev->next = newNode; 
+			}
+		}else{
+		//尾插,没找到指定账户，插到链表尾部
+			addNode(*head,user);
+		}
+	
+	return *head;
+}
+//删除
+Node *delNode(Node **head, char *name){
+	if(head == NULL){
+		return NULL;
+	}
+	
+		Node *current = *head;
+		Node *prev = NULL;
+		while(current->next != NULL && strcmp(current->data.name,name) != 0){
+			prev = current;
+			current = current->next;
+		}
+		//头删节点
+		
+		if(strcmp(current->data.name, name) == 0){
+			if(strcmp((*head)->data.name,name) == 0){
+				//删除头结点，未释放头结点空间
+				*head = (*head)->next; 
+			}else{
+				prev->next = current->next;	
+			}
+		}
+		free(current);
+		current->next =NULL;
+	
+	return *head;
+}
+//查找
+Node *inquireNode(Node *head,char *name){
+	Node *current = head;
+	while(current->next != NULL && strcmp(current->data.name,name) !=0){
+		current = current->next;
+	}
+	if(strcmp(current->data.name,name) ==0){
+		return current;
+	}
+	return NULL;
+}
+
+//修改
+Node *modifyNode(Node *head,char *name,Employee user){
+	if(head == NULL){
+		return NULL;
+	}
+	Node *current =head;
+	while(current->next != NULL && strcmp(current->data.name,name) != 0){
+		current = current->next;
+	}
+	if(strcmp(current->data.name,name) == 0){
+		current->data = user;
+	}else{
+		return NULL;
+	}
+	return head;
+}
+
+//遍历打印
+void print(Node *head){
+	Node *current =head;
+	while(current != NULL){
+		printf("账户：%d，姓名：%s，密码：%s。\n",current->data.id,current->data.name,current->data.password);
+		current = current->next;
+	}
+}
+/*
+int main(int argc, char *argv[]) {
+	User u1 = {"No.01","Employee1","1","123456","陕西西安"};
+	User u2 = {"No.02","Employee2","1","123456","陕西西安"};
+	User u3 = {"No.03","Employee3","1","123456","陕西西安"};
+	User u4 = {"No.04","Employee4","1","123456","陕西西安"};
+	User u5 = {"No.05","Employee5","1","123456","陕西西安"};
+	User u6 = {"No.06","Employee6","1","123456","陕西西安"};
+	User u7 = {"No.07","Employee7","1","123456","陕西西安"};
+	User u8 = {"No.08","Employee8","1","123456","陕西西安"};
+	User u9 = {"No.09","Employee9","1","123456","陕西西安"};
+	Node *head = createNode(u1);
+	addNode(head,u2);
+	addNode(head,u3);
+	addNode(head,u4);
+	addNode(head,u5);
+	puts("----------------------添加-----------------------");
+	print(head);
+	puts("----------------------插入-----------------------");
+	insertNode(&head,u1.acc,u6);
+	insertNode(&head,u3.acc,u7);
+	insertNode(&head,"sc",u9);
+	print(head);
+	puts("----------------------删除-----------------------");
+	delNode(&head,u6.acc);
+	delNode(&head,u7.acc);
+	print(head);
+	puts("----------------------查找-----------------------");
+	Node *inqu =inquireNode(head,u1.acc);
+	
+	if(inqu == NULL){
+		puts("没找到");
+		return 0;
+	}else if(strcmp(inqu->data.acc ,u1.acc) ==0){
+		puts("找到了");
+	} 
+	puts("----------------------修改-----------------------");
+	modifyNode(head,u2.acc,u8);
+	print(head);
+	
+    return 0;
+}
+*/
+

@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -O2   CMakeFiles/person.dir/StuInfoManager.cpp.o CMakeFiles/person.dir/main.cpp.o  -o bin/person 

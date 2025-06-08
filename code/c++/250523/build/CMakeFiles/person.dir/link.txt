@@ -1,0 +1,1 @@
+/usr/bin/c++   -Wall -O2   CMakeFiles/person.dir/PureVirtual.cpp.o CMakeFiles/person.dir/main.cpp.o CMakeFiles/person.dir/多态.cpp.o CMakeFiles/person.dir/多态纯虚函数实现泡茶流程.cpp.o CMakeFiles/person.dir/虚函数表指针.cpp.o  -o bin/person 
